@@ -5,13 +5,15 @@ import java.util.List;
 
 public class Cocktail {
     private List<Ingredient> ingredients;
+    private int id;
     private String name;
     private int volume;
     private int ABV;
     private int price;
 
-    public Cocktail(String name){
+    public Cocktail(int id,String name){
         this.name=name;
+        this.id=id;
     }
 
 

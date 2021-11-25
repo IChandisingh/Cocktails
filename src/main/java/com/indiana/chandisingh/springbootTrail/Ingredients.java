@@ -7,7 +7,7 @@ public class Ingredients {
     private List<Ingredient> ingredientsList= new ArrayList();
 
     public Ingredients(){
-        this.ingredientsList.add(new Ingredient("Vodka", "Alcohol"));
+        this.ingredientsList.add(new Ingredient(1,"Vodka", "Alcohol",40));
     }
 
 
@@ -15,9 +15,6 @@ public class Ingredients {
         return this.ingredientsList;
     }
 
-    public void addIngredient(Ingredient ingredient){
-        ingredientsList.add(ingredient);
-    }
 
     public String toString(){
         String json = new Gson().toJson(ingredientsList);
