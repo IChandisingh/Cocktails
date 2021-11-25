@@ -1,26 +1,20 @@
 package com.indiana.chandisingh.springbootTrail;
-import com.google.gson.Gson;
-
-import java.util.List;
-
-public class Equipment {
+public class Glass {
     private int id;
     private String name;
-    private String type;
+    private int volume;
 
-    public Equipment(int id, String name, String type){
-        this.name=name;
-        this.type=type;
+    public Glass(int id, String name, int volume){
         this.id=id;
+        this.name=name;
+        this.volume=volume;
     }
     @Override
     public String toString() {
         return "{" +
                 "\"name\"= \"" + name +
-                "\", \"type\"=\"" + type +
                 "\", \"id\"=\"" + id +
+                "\", \"volume\"=\"" + volume +
                 "\"}";
     }
-
-
 }

@@ -19,5 +19,10 @@ public class SpringbootTrailApplication {
 		return ingredients.toString();
 	}
 
+	@GetMapping("/getGlasses")
+	public String glassesResponse(){
+		Glasses glasses = new Glasses();
+		return glasses.toString();
+	}
 
 }

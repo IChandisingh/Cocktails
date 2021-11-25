@@ -15,6 +15,14 @@ public class Cocktail {
         this.name=name;
         this.id=id;
     }
+    @Override
+    public String toString() {
+        return "{" +
+                "\"name\"= \"" + name +
+                "\", \"id\"=\"" + id +
+                "\", \"ABV\"=\"" + ABV +
+                "\"}";
+    }
 
 
 }
