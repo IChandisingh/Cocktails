@@ -26,6 +26,46 @@ public class Ingredient {
     }
     public Ingredient(){}
 
+//////////////////////////////GETTERS////////////////////////////////
+    public int getABV() {
+        return ABV;
+    }
+    public int getIdIngredientid() {
+        return idIngredientid;
+    }
+    public String getDescription() {
+        return description;
+    }
+    public String getName() {
+        return name;
+    }
+    public String getStorage() {
+        return storage;
+    }
+    public String getType() {
+        return type;
+    }
+    ///////////////////////////////SETTERS////////////////////////////////////////
+
+    public void setABV(int ABV) {
+        this.ABV = ABV;
+    }
+    public void setDescription(String description) {
+        this.description = description;
+    }
+    public void setIdIngredientid(int idIngredientid) {
+        this.idIngredientid = idIngredientid;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public void setStorage(String storage) {
+        this.storage = storage;
+    }
+    public void setType(String type) {
+        this.type = type;
+    }
+    //////////////////////////////////////////////////////////////////////////////////
     @Override
     public String toString() {
         return "{" +
