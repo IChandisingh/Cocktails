@@ -1,24 +1,59 @@
 package com.indiana.chandisingh.springbootTrail;
-import com.google.gson.Gson;
 
-import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+@Entity
 public class Equipment {
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.TABLE)
+    private int idequipment;
+
     private String name;
     private String type;
 
-    public Equipment(int id, String name, String type){
+    public Equipment(){}
+
+    public Equipment( String name, String type){
         this.name=name;
         this.type=type;
-        this.id=id;
+
     }
+    /////////////////////////////GETTERS/////////////////////////////
+
+    public String getName() {
+        return name;
+    }
+    public String getType() {
+        return type;
+    }
+    public int getIdequipment() {
+        return idequipment;
+    }
+
+    ////////////////////////////SETTERS//////////////////////////////
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public void setIdequipment(int idequipment) {
+        this.idequipment = idequipment;
+    }
+
+    ///////////////////////////////////////////////////////////////
     @Override
     public String toString() {
         return "{" +
                 "\"name\"= \"" + name +
                 "\", \"type\"=\"" + type +
-                "\", \"id\"=\"" + id +
+                "\", \"id\"=\"" + idequipment +
                 "\"}";
     }
 

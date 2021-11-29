@@ -1,5 +1,5 @@
 package com.indiana.chandisingh.springbootTrail;
-//import com.google.gson.Gson;
+import com.google.gson.Gson;
 //import org.springframework.context.annotation.EnableMBeanExport;
 
 import javax.persistence.Entity;
@@ -75,5 +75,14 @@ public class Ingredients {
         this.type = type;
     }
     //////////////////////////////////////////////////////////////////////////////////
+
+    @Override
+    public String toString() {
+        return "{" +
+                "\"id\"= \"" + idingredientid +
+                "\", name\"= \"" + name +
+                "\", \"type\"=\"" + type +
+                "\"}";
+    }
 
 }
