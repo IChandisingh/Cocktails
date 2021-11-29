@@ -30,8 +30,8 @@ public class SpringbootTrailApplication {
 	}
 
 	@GetMapping("/getIngredient")
-	public @ResponseBody String getIngredient(@RequestParam int id){
-		return ingredientRepository.findById(id).get().toString();
+	public @ResponseBody Ingredients getIngredient(@RequestParam int id){
+		return ingredientRepository.findById(id).get();
 	}
 
 	@PostMapping("/addIngredient")
@@ -51,6 +51,10 @@ public class SpringbootTrailApplication {
 		return garnishRepository.findAll();
 	}
 
+	@GetMapping("/getGarnish")
+	public @ResponseBody Garnish getGarnish(@RequestParam int id){
+		return garnishRepository.findById(id).get();
+	}
 	@PostMapping("/addGarnish")
 	public @ResponseBody String addGarnish (@RequestParam String name,
 											   @RequestParam String type,
@@ -65,6 +69,11 @@ public class SpringbootTrailApplication {
 	@GetMapping("/getAllEquipment")
 	public @ResponseBody Iterable<Equipment> getAllEquipment(){
 		return equipmentRepository.findAll();
+	}
+
+	@GetMapping("/getEquipment")
+	public @ResponseBody Equipment getEquipment(@RequestParam int id){
+		return equipmentRepository.findById(id).get();
 	}
 
 	@PostMapping("/addEquipment")
