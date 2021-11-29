@@ -4,7 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.*;
-import com.google.gson.Gson;
+
+import java.util.Optional;
 
 
 @SpringBootApplication
@@ -44,6 +45,23 @@ public class SpringbootTrailApplication {
 		ingredientRepository.save(savedIngredient);
 		return "Saved";
 	}
+
+	@PutMapping("/updateIngredient/{id}")
+	public @ResponseBody Ingredients updateIngredient (@RequestParam String name,
+												  @RequestParam String type,
+												  @RequestParam String description,
+												  @RequestParam String storage,
+												  @PathVariable int id){
+		Ingredients existingIngredient=ingredientRepository.findById(id).get();
+		existingIngredient.setStorage(storage);
+		existingIngredient.setType(type);
+		existingIngredient.setName(name);
+		existingIngredient.setDescription(description);
+		ingredientRepository.save(existingIngredient);
+		return existingIngredient;
+	}
+
+
 	/////////////////////////GARNISH//////////////////////////////////////////////
 
 	@GetMapping("/getAllGarnish")
