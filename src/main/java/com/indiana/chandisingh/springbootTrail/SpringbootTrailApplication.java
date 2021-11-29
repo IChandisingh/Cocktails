@@ -60,6 +60,12 @@ public class SpringbootTrailApplication {
 		ingredientRepository.save(existingIngredient);
 		return existingIngredient;
 	}
+	@DeleteMapping("/deleteIngredient")
+	public @ResponseBody String deleteIngredient(@RequestParam int idingredientid){
+		Ingredients existingIngredient=ingredientRepository.findById(idingredientid).get();
+		ingredientRepository.delete(existingIngredient);
+		return "Deleted";
+	}
 
 
 	/////////////////////////GARNISH//////////////////////////////////////////////
