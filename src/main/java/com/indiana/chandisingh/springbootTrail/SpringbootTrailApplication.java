@@ -13,45 +13,45 @@ public class SpringbootTrailApplication {
 
 	@Autowired
 	private IngredientRepository ingredientRepository;
+	@Autowired
+	private GarnishRepository garnishRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringbootTrailApplication.class, args);}
 
-	/*
-	@GetMapping("/getIngredient")
-	public String ingredientResponse(){
-		Ingredient ingredient = new Ingredient(1,"Vodka","Alcohol",40);
-		return ingredient.toString();
-	}
-	 */
+	/////////////////INGREDIENTS////////////////////////////////////////////////////
+
 	@GetMapping("/getIngredients")
 	//@GetMapping("/all")
-	public @ResponseBody Iterable<Ingredient> getAllUsers(){
+	public @ResponseBody Iterable<Ingredients> getAllIngredients(){
 		return ingredientRepository.findAll();
 	}
 
 
 	@PostMapping("/addIngredient")
-	public @ResponseBody String addIngredient (@RequestParam String name, @RequestParam String type, @RequestParam int ABV, @RequestParam String description, @RequestParam String storage){
-		Ingredient savedIngredient= new Ingredient(name, type, ABV,description,storage);
+	public @ResponseBody String addIngredient (@RequestParam String name,
+											   @RequestParam String type,
+											   //@RequestParam Integer abv,
+											   @RequestParam String description,
+											   @RequestParam String storage){
+		Ingredients savedIngredient = new Ingredients(name,type,description,storage);
 		ingredientRepository.save(savedIngredient);
 		return "Saved";
 	}
+	/////////////////////////GARNISH//////////////////////////////////////////////
 
-
-	/*
-	@GetMapping("/getIngredients")
-	public String ingredientsResponse(){
-		Ingredients ingredients = new Ingredients();
-		return ingredients.toString();
+	@GetMapping("/getGarnish")
+	public @ResponseBody Iterable<Garnish> getAllGarnish(){
+		return garnishRepository.findAll();
 	}
 
-	@GetMapping("/getGlasses")
-	public String glassesResponse(){
-		Glasses glasses = new Glasses();
-		return glasses.toString();
+	@PostMapping("/addGarnish")
+	public @ResponseBody String addGarnish (@RequestParam String name,
+											   @RequestParam String type,
+											   @RequestParam String storage){
+		Garnish savedGarnish = new Garnish(name, type, storage);
+		garnishRepository.save(savedGarnish);
+		return "Saved";
 	}
-
-	 */
 
 }

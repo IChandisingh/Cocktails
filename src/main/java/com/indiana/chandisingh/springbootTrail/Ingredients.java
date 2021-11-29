@@ -1,37 +1,43 @@
 package com.indiana.chandisingh.springbootTrail;
-import com.google.gson.Gson;
+//import com.google.gson.Gson;
+//import org.springframework.context.annotation.EnableMBeanExport;
 
-import org.springframework.context.annotation.EnableMBeanExport;
-
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
-public class Ingredient {
+public class Ingredients {
 
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
-    private int idIngredientid;
+    private int idingredientid;
     private String name;
     private String type;
-    private int ABV;
+    private Integer abv=0;
     private String description;
     private String storage;
 
-    public Ingredient(String name, String type, int ABV, String description, String storage){
+
+    public Ingredients(){}
+
+    public Ingredients(String name, String type, String description, String storage){
         this.name=name;
         this.type=type;
-        this.ABV=ABV;
+        //this.abv=abv;
         this.description=description;
         this.storage=storage;
     }
-    public Ingredient(){}
 
-//////////////////////////////GETTERS////////////////////////////////
-    public int getABV() {
-        return ABV;
+    //////////////////////////////GETTERS////////////////////////////////
+   /*public int getAbv() {
+        return abv;
     }
-    public int getIdIngredientid() {
-        return idIngredientid;
+
+    */
+    public int getIdingredientid() {
+        return idingredientid;
     }
     public String getDescription() {
         return description;
@@ -46,15 +52,18 @@ public class Ingredient {
         return type;
     }
     ///////////////////////////////SETTERS////////////////////////////////////////
-
-    public void setABV(int ABV) {
-        this.ABV = ABV;
+/*
+    public void setAbv(int abv) {
+        this.abv = abv;
     }
+
+ */
+
     public void setDescription(String description) {
         this.description = description;
     }
-    public void setIdIngredientid(int idIngredientid) {
-        this.idIngredientid = idIngredientid;
+    public void setIdingredientid(int idingredientid) {
+        this.idingredientid = idingredientid;
     }
     public void setName(String name) {
         this.name = name;
@@ -66,15 +75,5 @@ public class Ingredient {
         this.type = type;
     }
     //////////////////////////////////////////////////////////////////////////////////
-    @Override
-    public String toString() {
-        return "{" +
-                "\"id\"= \"" + idIngredientid +
-                "\"name\"= \"" + name +
-                "\", \"type\"=\"" + type +
-                "\", \"ABV\"=\"" + ABV +
-                "\"}";
-    }
+
 }
-
-

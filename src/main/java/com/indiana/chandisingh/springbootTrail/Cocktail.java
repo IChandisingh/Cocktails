@@ -1,10 +1,9 @@
 package com.indiana.chandisingh.springbootTrail;
-import com.google.gson.Gson;
 
 import java.util.List;
 
 public class Cocktail {
-    private List<Ingredient> ingredients;
+    private List<Ingredients> ingredients;
     private int id;
     private String name;
     private int volume;
