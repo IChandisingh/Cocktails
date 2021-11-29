@@ -34,7 +34,6 @@ public class SpringbootTrailApplication {
 	public @ResponseBody Ingredients getIngredient(@RequestParam int id){
 		return ingredientRepository.findById(id).get();
 	}
-
 	@PostMapping("/addIngredient")
 	public @ResponseBody String addIngredient (@RequestParam String name,
 											   @RequestParam String type,
@@ -45,7 +44,6 @@ public class SpringbootTrailApplication {
 		ingredientRepository.save(savedIngredient);
 		return "Saved";
 	}
-
 	@PutMapping("/updateIngredient/{id}")
 	public @ResponseBody Ingredients updateIngredient (@RequestParam String name,
 												  @RequestParam String type,
@@ -67,7 +65,6 @@ public class SpringbootTrailApplication {
 		return "Deleted";
 	}
 
-
 	/////////////////////////GARNISH//////////////////////////////////////////////
 
 	@GetMapping("/getAllGarnish")
@@ -86,6 +83,25 @@ public class SpringbootTrailApplication {
 		Garnish savedGarnish = new Garnish(name, type, storage);
 		garnishRepository.save(savedGarnish);
 		return "Saved";
+	}
+
+	@PutMapping("/updateGarnish/{id}")
+	public @ResponseBody Garnish updateGarnish (@RequestParam String name,
+													   @RequestParam String type,
+													   @RequestParam String storage,
+													   @PathVariable int id){
+		Garnish existingGarnish=garnishRepository.findById(id).get();
+		existingGarnish.setStorage(storage);
+		existingGarnish.setType(type);
+		existingGarnish.setName(name);
+		garnishRepository.save(existingGarnish);
+		return existingGarnish;
+	}
+	@DeleteMapping("/deleteGarnish")
+	public @ResponseBody String deleteGarnish(@RequestParam int idgarnish){
+		Garnish existingGarnish=garnishRepository.findById(idgarnish).get();
+		garnishRepository.delete(existingGarnish);
+		return "Deleted";
 	}
 	///////////////////////////////////////////////////////////////////////////////////
 
@@ -107,6 +123,23 @@ public class SpringbootTrailApplication {
 		equipmentRepository.save(savedEquipment);
 		return "Saved";
 	}
+	@PutMapping("/updateEquipment/{id}")
+	public @ResponseBody Equipment updateEquipment (@RequestParam String name,
+												@RequestParam String type,
+												@PathVariable int id){
+		Equipment existingEquipment=equipmentRepository.findById(id).get();
+		existingEquipment.setType(type);
+		existingEquipment.setName(name);
+		equipmentRepository.save(existingEquipment);
+		return existingEquipment;
+	}
+	@DeleteMapping("/deleteEquipment")
+	public @ResponseBody String deleteEquipment(@RequestParam int idequipment){
+		Equipment existingEquipment=equipmentRepository.findById(idequipment).get();
+		equipmentRepository.delete(existingEquipment);
+		return "Deleted";
+	}
+
 
 
 }
