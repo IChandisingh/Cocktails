@@ -1,18 +1,30 @@
 package com.indiana.chandisingh.springbootTrail;
+import javax.persistence.Entity;
+
+@Entity
 public class Instruction {
-    private int id;
+    private int idinstruction;
     private String description;
 
-    public Instruction(int id, String description){
-        this.id=id;
+    public Instruction(int idinstruction, String description){
+        this.idinstruction = idinstruction;
         this.description=description;
     }
 
-    @Override
-    public String toString() {
-        return "{" +
-                "\"id\"= \"" + id +
-                "\", \"description\"=\"" + description +
-                "\"}";
+    //////////////////////GETTERS//////////////////////////////////////
+    public String getDescription() {
+        return description;
+    }
+
+    public int getIdinstruction() {
+        return idinstruction;
+    }
+    //////////////////////SETTERS/////////////////////////////////////
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setIdinstruction(int idinstruction) {
+        this.idinstruction = idinstruction;
     }
 }

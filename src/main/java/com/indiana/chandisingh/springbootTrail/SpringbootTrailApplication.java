@@ -19,6 +19,10 @@ public class SpringbootTrailApplication {
 	private GarnishRepository garnishRepository;
 	@Autowired
 	private EquipmentRepository equipmentRepository;
+	@Autowired
+	private InstructionRepository instructionRepository;
+	@Autowired
+	private GlassRepository glassRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringbootTrailApplication.class, args);}
@@ -139,6 +143,17 @@ public class SpringbootTrailApplication {
 		equipmentRepository.delete(existingEquipment);
 		return "Deleted";
 	}
+	/////////////////////////////GLASS////////////////////////////////////////////
+
+
+	//////////////////////////INSTRUCTION/////////////////////////////////////////
+
+
+	/////////////////////////COCKTAIL////////////////////////////////////////////
+
+
+
+
 
 
 

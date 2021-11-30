@@ -1,20 +1,41 @@
 package com.indiana.chandisingh.springbootTrail;
+import javax.persistence.Entity;
+
+@Entity
 public class Glass {
-    private int id;
-    private String name;
+    private int idglass;
+    private String type;
     private int volume;
 
-    public Glass(int id, String name, int volume){
-        this.id=id;
-        this.name=name;
+    public Glass(){}
+
+    public Glass(int idglass, String type, int volume){
+        this.idglass=idglass;
+        this.type = type;
         this.volume=volume;
     }
-    @Override
-    public String toString() {
-        return "{" +
-                "\"name\"= \"" + name +
-                "\", \"id\"=\"" + id +
-                "\", \"volume\"=\"" + volume +
-                "\"}";
+    ///////////////////GETTERS/////////////////////////////////////////////
+    public String getType() {
+        return type;
+    }
+
+    public int getIdglass() {
+        return idglass;
+    }
+
+    public int getVolume() {
+        return volume;
+    }
+    /////////////////////////////SETTERS/////////////////////////////////
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public void setIdglass(int idglass) {
+        this.idglass = idglass;
+    }
+
+    public void setVolume(int volume) {
+        this.volume = volume;
     }
 }
