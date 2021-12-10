@@ -1,13 +1,21 @@
 package com.indiana.chandisingh.springbootTrail;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
 public class Instruction {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.TABLE)
     private int idinstruction;
+
     private String description;
 
-    public Instruction(int idinstruction, String description){
-        this.idinstruction = idinstruction;
+    public Instruction(){}
+
+    public Instruction( String description){
         this.description=description;
     }
 
@@ -15,7 +23,6 @@ public class Instruction {
     public String getDescription() {
         return description;
     }
-
     public int getIdinstruction() {
         return idinstruction;
     }

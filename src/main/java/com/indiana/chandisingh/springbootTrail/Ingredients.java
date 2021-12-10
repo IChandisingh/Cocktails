@@ -15,27 +15,27 @@ public class Ingredients {
     private int idingredientid;
     private String name;
     private String type;
-    private Integer abv=0;
+    private Integer abv;
     private String description;
     private String storage;
 
 
     public Ingredients(){}
 
-    public Ingredients(String name, String type, String description, String storage){
+    public Ingredients(int abv, String name, String type, String description, String storage){
         this.name=name;
         this.type=type;
-        //this.abv=abv;
+        this.abv=abv;
         this.description=description;
         this.storage=storage;
     }
 
     //////////////////////////////GETTERS////////////////////////////////
-   /*public int getAbv() {
+   public int getAbv() {
         return abv;
     }
 
-    */
+
     public int getIdingredientid() {
         return idingredientid;
     }
@@ -52,12 +52,12 @@ public class Ingredients {
         return type;
     }
     ///////////////////////////////SETTERS////////////////////////////////////////
-/*
+
     public void setAbv(int abv) {
         this.abv = abv;
     }
 
- */
+
 
     public void setDescription(String description) {
         this.description = description;

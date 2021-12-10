@@ -41,10 +41,10 @@ public class SpringbootTrailApplication {
 	@PostMapping("/addIngredient")
 	public @ResponseBody String addIngredient (@RequestParam String name,
 											   @RequestParam String type,
-											   //@RequestParam Integer abv,
+											   @RequestParam Integer abv,
 											   @RequestParam String description,
 											   @RequestParam String storage){
-		Ingredients savedIngredient = new Ingredients(name,type,description,storage);
+		Ingredients savedIngredient = new Ingredients(abv,name,type,description,storage);
 		ingredientRepository.save(savedIngredient);
 		return "Saved";
 	}
@@ -123,8 +123,8 @@ public class SpringbootTrailApplication {
 	@PostMapping("/addEquipment")
 	public @ResponseBody String addEquipment (@RequestParam String name,
 											@RequestParam String type) {
-		Equipment savedEquipment = new Equipment(name,type);
-		equipmentRepository.save(savedEquipment);
+		Equipment newEquipment = new Equipment(name,type);
+		equipmentRepository.save(newEquipment);
 		return "Saved";
 	}
 	@PutMapping("/updateEquipment/{id}")
@@ -145,9 +145,51 @@ public class SpringbootTrailApplication {
 	}
 	/////////////////////////////GLASS////////////////////////////////////////////
 
-
+	@GetMapping("/getAllGlasses")
+	public @ResponseBody Iterable<Glass> getAllGlasses(){
+		return glassRepository.findAll();
+	}
+	@GetMapping("/getGlass")
+	public @ResponseBody Glass getGlass(@RequestParam int id){
+		return glassRepository.findById(id).get();
+	}
+	@PostMapping("/addGlass")
+	public @ResponseBody String addGlass (@RequestParam String type,@RequestParam int volume){
+		Glass newGlass = new Glass(type,volume);
+		glassRepository.save(newGlass);
+		return "Saved";
+	}
+	@PutMapping("/updateGlass/{id}")
+	public @ResponseBody Glass updateGlass (@RequestParam String type,
+													@RequestParam int volume,
+													@PathVariable int id){
+		Glass existingGlass=glassRepository.findById(id).get();
+		existingGlass.setType(type);
+		existingGlass.setVolume(volume);
+		glassRepository.save(existingGlass);
+		return existingGlass;
+	}
+	@DeleteMapping("/deleteGlass")
+	public @ResponseBody String deleteGlass(@RequestParam int idglass){
+		Glass existingGlass=glassRepository.findById(idglass).get();
+		glassRepository.delete(existingGlass);
+		return "Deleted";
+	}
 	//////////////////////////INSTRUCTION/////////////////////////////////////////
-
+	@GetMapping("/getAllInstructions")
+	public @ResponseBody Iterable<Instruction> getAllInstructions(){
+		return instructionRepository.findAll();
+	}
+	@GetMapping("/getInstruction")
+	public @ResponseBody Instruction getInstruction(@RequestParam int id){
+		return instructionRepository.findById(id).get();
+	}
+	@PostMapping("/addInstruction")
+	public @ResponseBody String addInstruction (@RequestParam String description){
+		Instruction newInstruction = new Instruction(description);
+		instructionRepository.save(newInstruction);
+		return "Saved";
+	}
 
 	/////////////////////////COCKTAIL////////////////////////////////////////////
 
