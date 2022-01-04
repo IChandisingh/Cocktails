@@ -76,9 +76,9 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>com.amazonaws</groupId>
-			<artifactId>aws-java-sdk-secretsmanager</artifactId>
-			<version>1.11.355</version>
+			<groupId>com.amazonaws.secretsmanager</groupId>
+			<artifactId>aws-secretsmanager-jdbc</artifactId>
+			<version>1.0.5</version>
 		</dependency>
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
@@ -91,10 +91,11 @@
 			<artifactId>webdrivermanager</artifactId>
 			<version>5.0.3</version>
 		</dependency>
-	</dependencies>
 
+	</dependencies>
 	<build>
 		<plugins>
+
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
