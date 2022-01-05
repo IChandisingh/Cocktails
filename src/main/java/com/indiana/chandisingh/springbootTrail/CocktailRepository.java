@@ -6,4 +6,3 @@ public interface CocktailRepository extends CrudRepository<Cocktail,Integer> {
 
 }
 
-

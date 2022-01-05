@@ -1,10 +1,12 @@
 package com.indiana.chandisingh.springbootTrail;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.List;
 
+@Entity
 public class Cocktail {
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)

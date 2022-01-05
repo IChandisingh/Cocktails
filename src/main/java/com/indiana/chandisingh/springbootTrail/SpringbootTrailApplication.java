@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 @SpringBootApplication
 @RestController
+@CrossOrigin
 @RequestMapping("/cocktails")
 public class SpringbootTrailApplication {
 
@@ -23,6 +24,7 @@ public class SpringbootTrailApplication {
 	private GlassRepository glassRepository;
 	@Autowired
 	private CocktailRepository cocktailRepository;
+
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringbootTrailApplication.class, args);}
@@ -206,6 +208,8 @@ public class SpringbootTrailApplication {
 		return "Deleted";
 	}
 	/////////////////////////COCKTAIL////////////////////////////////////////////
+
+
 	@GetMapping("/getAllCocktails")
 	public @ResponseBody Iterable<Cocktail> getAllCocktails(){
 		return cocktailRepository.findAll();
@@ -243,7 +247,6 @@ public class SpringbootTrailApplication {
 		cocktailRepository.delete(existingCocktail);
 		return "Deleted";
 	}
-
 
 
 
