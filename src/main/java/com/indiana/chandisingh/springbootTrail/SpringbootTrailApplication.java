@@ -27,6 +27,7 @@ public class SpringbootTrailApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SpringbootTrailApplication.class, args);}
 
+
 	/////////////////INGREDIENTS////////////////////////////////////////////////////
 
 	@GetMapping("/getAllIngredients")
