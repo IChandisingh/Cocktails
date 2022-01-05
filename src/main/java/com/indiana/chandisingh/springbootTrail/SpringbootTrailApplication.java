@@ -25,7 +25,19 @@ public class SpringbootTrailApplication {
 	@Autowired
 	private CocktailRepository cocktailRepository;
 
-
+	public SpringbootTrailApplication(IngredientRepository ingredientRepository,
+									  GarnishRepository garnishRepository,
+									  EquipmentRepository equipmentRepository,
+									  InstructionRepository instructionRepository,
+									  GlassRepository glassRepository,
+									  CocktailRepository cocktailRepository){
+		this.ingredientRepository=ingredientRepository;
+		this.garnishRepository=garnishRepository;
+		this.equipmentRepository=equipmentRepository;
+		this.instructionRepository=instructionRepository;
+		this.glassRepository=glassRepository;
+		this.cocktailRepository=cocktailRepository;
+	}
 	public static void main(String[] args) {
 		SpringApplication.run(SpringbootTrailApplication.class, args);}
 
