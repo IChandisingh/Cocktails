@@ -10,9 +10,16 @@ public class EquipmentTest {
         Equipment equipment = new Equipment();
         equipment.setName("Name");
         equipment.setType("Type");
+        equipment.setIdequipment(1);
         assertEquals("Type",equipment.getType(),"Type not set");
         assertEquals("Name",equipment.getName(),"Name not set");
-
+        assertEquals(1,equipment.getIdequipment(),"Id not set");
+    }
+    @Test
+    public void testEquipmentConstructor(){
+        Equipment equipment = new Equipment("Name","Type");
+        assertEquals("Type",equipment.getType(),"Type not set");
+        assertEquals("Name",equipment.getName(),"Name not set");
     }
 
 }
