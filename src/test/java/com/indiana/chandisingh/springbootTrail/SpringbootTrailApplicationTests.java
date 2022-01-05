@@ -5,6 +5,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 class SpringbootTrailApplicationTests {
+    SpringbootTrailApplication main = new SpringbootTrailApplication();
 
 
 

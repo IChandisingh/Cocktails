@@ -1,10 +1,6 @@
 package com.indiana.chandisingh.springbootTrail;
 
-import io.cucumber.java.PendingException;
 import io.cucumber.java.en.Given;
-import io.cucumber.java.en.When;
-import io.cucumber.java.en.Then;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

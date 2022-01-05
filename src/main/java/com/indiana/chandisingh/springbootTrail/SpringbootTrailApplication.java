@@ -5,8 +5,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
-
 
 @SpringBootApplication
 @RestController
@@ -23,6 +21,8 @@ public class SpringbootTrailApplication {
 	private InstructionRepository instructionRepository;
 	@Autowired
 	private GlassRepository glassRepository;
+	@Autowired
+	private CocktailRepository cocktailRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringbootTrailApplication.class, args);}
@@ -108,7 +108,7 @@ public class SpringbootTrailApplication {
 		garnishRepository.delete(existingGarnish);
 		return "Deleted";
 	}
-	///////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////Equipment/////////////////////////////////////////////
 
 
 	@GetMapping("/getAllEquipment")
@@ -191,9 +191,58 @@ public class SpringbootTrailApplication {
 		instructionRepository.save(newInstruction);
 		return "Saved";
 	}
-
+	@PutMapping("/updateInstruction/{id}")
+	public @ResponseBody Instruction updateInstruction (@RequestParam String description,
+														@PathVariable int id){
+		Instruction existingInstruction=instructionRepository.findById(id).get();
+		existingInstruction.setDescription(description);
+		instructionRepository.save(existingInstruction);
+		return existingInstruction;
+	}
+	@DeleteMapping("/deleteInstruction")
+	public @ResponseBody String deleteInstruction(@RequestParam int idinstruction){
+		Instruction existingInstruction=instructionRepository.findById(idinstruction).get();
+		instructionRepository.delete(existingInstruction);
+		return "Deleted";
+	}
 	/////////////////////////COCKTAIL////////////////////////////////////////////
-
+	@GetMapping("/getAllCocktails")
+	public @ResponseBody Iterable<Cocktail> getAllCocktails(){
+		return cocktailRepository.findAll();
+	}
+	@GetMapping("/geCocktail")
+	public @ResponseBody Cocktail getCocktail(@RequestParam int id){
+		return cocktailRepository.findById(id).get();
+	}
+	@PostMapping("/addCocktail")
+	public @ResponseBody String addCocktail (@RequestParam String name,
+											 @RequestParam int volume,
+											 @RequestParam int ABV,
+											 @RequestParam int price){
+		Cocktail newCocktail = new Cocktail(name,volume,ABV,price);
+		cocktailRepository.save(newCocktail);
+		return "Saved";
+	}
+	@PutMapping("/updateCocktail/{id}")
+	public @ResponseBody Cocktail updateCocktail (@RequestParam String name,
+												  @RequestParam int volume,
+												  @RequestParam int ABV,
+												  @RequestParam int price,
+												  @PathVariable int id){
+		Cocktail existingCocktail=cocktailRepository.findById(id).get();
+		existingCocktail.setPrice(price);
+		existingCocktail.setABV(ABV);
+		existingCocktail.setName(name);
+		existingCocktail.setVolume(volume);
+		cocktailRepository.save(existingCocktail);
+		return existingCocktail;
+	}
+	@DeleteMapping("/deleteCocktail")
+	public @ResponseBody String deleteCocktail(@RequestParam int idcocktail){
+		Cocktail existingCocktail=cocktailRepository.findById(idcocktail).get();
+		cocktailRepository.delete(existingCocktail);
+		return "Deleted";
+	}
 
 
 
