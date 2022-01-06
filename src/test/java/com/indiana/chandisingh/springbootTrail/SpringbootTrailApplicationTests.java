@@ -11,7 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.verify;
 
-@SpringBootTest
+
 class SpringbootTrailApplicationTests {
 
     @Mock
@@ -67,7 +67,7 @@ class SpringbootTrailApplicationTests {
 
     @Test
     @Disabled
-    public void testgetIngredients(){}
+    public void testGetIngredients(){}
 
     @Test
     @Disabled
