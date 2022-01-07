@@ -48,14 +48,7 @@ public class Equipment {
     }
 
     ///////////////////////////////////////////////////////////////
-    @Override
-    public String toString() {
-        return "{" +
-                "\"name\"= \"" + name +
-                "\", \"type\"=\"" + type +
-                "\", \"id\"=\"" + idequipment +
-                "\"}";
-    }
+
 
 
 }

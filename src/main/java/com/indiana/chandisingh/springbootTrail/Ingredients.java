@@ -76,13 +76,6 @@ public class Ingredients {
     }
     //////////////////////////////////////////////////////////////////////////////////
 
-    @Override
-    public String toString() {
-        return "{" +
-                "\"id\"= \"" + idingredientid +
-                "\", name\"= \"" + name +
-                "\", \"type\"=\"" + type +
-                "\"}";
-    }
+
 
 }

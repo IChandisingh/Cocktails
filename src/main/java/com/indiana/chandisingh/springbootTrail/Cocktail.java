@@ -36,14 +36,7 @@ public class Cocktail {
     public void setIdcocktail(int idcocktail) {this.idcocktail = idcocktail;}
     public void setPrice(int price) {this.price = price;}
 
-    @Override
-    public String toString() {
-        return "{" +
-                "\"name\"= \"" + name +
-                "\", \"id\"=\"" + idcocktail +
-                "\", \"ABV\"=\"" + ABV +
-                "\"}";
-    }
+
 
 
 }
