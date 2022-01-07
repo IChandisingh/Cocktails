@@ -55,13 +55,8 @@ public class SpringbootTrailApplication {
 		return ingredientRepository.findById(id).get();
 	}
 	@PostMapping("/addIngredient")
-	public @ResponseBody String addIngredient (@RequestParam String name,
-											   @RequestParam String type,
-											   @RequestParam Integer abv,
-											   @RequestParam String description,
-											   @RequestParam String storage){
-		Ingredients savedIngredient = new Ingredients(abv,name,type,description,storage);
-		ingredientRepository.save(savedIngredient);
+	public @ResponseBody String addIngredient (Ingredients ingredient){
+		ingredientRepository.save(ingredient);
 		return "Saved";
 	}
 	@PutMapping("/updateIngredient/{id}")
@@ -97,11 +92,8 @@ public class SpringbootTrailApplication {
 		return garnishRepository.findById(id).get();
 	}
 	@PostMapping("/addGarnish")
-	public @ResponseBody String addGarnish (@RequestParam String name,
-											   @RequestParam String type,
-											   @RequestParam String storage){
-		Garnish savedGarnish = new Garnish(name, type, storage);
-		garnishRepository.save(savedGarnish);
+	public @ResponseBody String addGarnish (Garnish garnish){
+		garnishRepository.save(garnish);
 		return "Saved";
 	}
 
@@ -137,10 +129,8 @@ public class SpringbootTrailApplication {
 	}
 
 	@PostMapping("/addEquipment")
-	public @ResponseBody String addEquipment (@RequestParam String name,
-											@RequestParam String type) {
-		Equipment newEquipment = new Equipment(name,type);
-		equipmentRepository.save(newEquipment);
+	public @ResponseBody String addEquipment (Equipment equipment) {
+		equipmentRepository.save(equipment);
 		return "Saved";
 	}
 	@PutMapping("/updateEquipment/{id}")
@@ -170,9 +160,8 @@ public class SpringbootTrailApplication {
 		return glassRepository.findById(id).get();
 	}
 	@PostMapping("/addGlass")
-	public @ResponseBody String addGlass (@RequestParam String type,@RequestParam int volume){
-		Glass newGlass = new Glass(type,volume);
-		glassRepository.save(newGlass);
+	public @ResponseBody String addGlass (Glass glass){
+		glassRepository.save(glass);
 		return "Saved";
 	}
 	@PutMapping("/updateGlass/{id}")
@@ -201,9 +190,8 @@ public class SpringbootTrailApplication {
 		return instructionRepository.findById(id).get();
 	}
 	@PostMapping("/addInstruction")
-	public @ResponseBody String addInstruction (@RequestParam String description){
-		Instruction newInstruction = new Instruction(description);
-		instructionRepository.save(newInstruction);
+	public @ResponseBody String addInstruction (Instruction instruction){
+		instructionRepository.save(instruction);
 		return "Saved";
 	}
 	@PutMapping("/updateInstruction/{id}")
@@ -232,12 +220,8 @@ public class SpringbootTrailApplication {
 		return cocktailRepository.findById(id).get();
 	}
 	@PostMapping("/addCocktail")
-	public @ResponseBody String addCocktail (@RequestParam String name,
-											 @RequestParam int volume,
-											 @RequestParam int ABV,
-											 @RequestParam int price){
-		Cocktail newCocktail = new Cocktail(name,volume,ABV,price);
-		cocktailRepository.save(newCocktail);
+	public @ResponseBody String addCocktail (Cocktail cocktail){
+		cocktailRepository.save(cocktail);
 		return "Saved";
 	}
 	@PutMapping("/updateCocktail/{id}")

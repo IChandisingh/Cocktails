@@ -10,6 +10,8 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.verify;
 
@@ -78,18 +80,71 @@ class SpringbootTrailApplicationTests {
                                                     "type",
                                                     "description",
                                                     "storage");
-        main.addIngredient(
-                "name",
-                "type",
-                0,
-                "description",
-                "storage");
+        main.addIngredient(ingredients);
 
         ArgumentCaptor<Ingredients> ingredientsArgumentCaptor =
                 ArgumentCaptor.forClass(Ingredients.class);
         verify(ingredientRepository).save(ingredientsArgumentCaptor.capture());
         Ingredients capturedIngredients = ingredientsArgumentCaptor.getValue();
+        assertThat(capturedIngredients).isEqualTo(ingredients);
     }
+
+    @Test
+    public void testAddGarnish(){
+        Garnish garnish = new Garnish("name","type","storage");
+        main.addGarnish(garnish);
+
+        ArgumentCaptor<Garnish> garnishArgumentCaptor =
+                ArgumentCaptor.forClass(Garnish.class);
+        verify(garnishRepository).save(garnishArgumentCaptor.capture());
+        Garnish capturedGarnish = garnishArgumentCaptor.getValue();
+        assertThat(capturedGarnish).isEqualTo(garnish);
+    }
+
+    @Test
+    public void testAddEquipment(){
+        Equipment equipment = new Equipment("name","type");
+        main.addEquipment(equipment);
+        ArgumentCaptor<Equipment> equipmentArgumentCaptor =
+                ArgumentCaptor.forClass(Equipment.class);
+        verify(equipmentRepository).save(equipmentArgumentCaptor.capture());
+        Equipment capturedEquipment = equipmentArgumentCaptor.getValue();
+        assertThat(capturedEquipment).isEqualTo(equipment);
+    }
+
+    @Test
+    public void testAddCocktail(){
+        Cocktail cocktail = new Cocktail("name",10,0,3);
+        main.addCocktail(cocktail);
+        ArgumentCaptor<Cocktail> cocktailArgumentCaptor =
+                ArgumentCaptor.forClass(Cocktail.class);
+        verify(cocktailRepository).save(cocktailArgumentCaptor.capture());
+        Cocktail capturedCocktail = cocktailArgumentCaptor.getValue();
+        assertThat(capturedCocktail).isEqualTo(cocktail);
+    }
+
+    @Test
+    public void testAddInstruction(){
+        Instruction instruction = new Instruction("description");
+        main.addInstruction(instruction);
+        ArgumentCaptor<Instruction> instructionArgumentCaptor =
+                ArgumentCaptor.forClass(Instruction.class);
+        verify(instructionRepository).save(instructionArgumentCaptor.capture());
+        Instruction capturedInstruction = instructionArgumentCaptor.getValue();
+        assertThat(capturedInstruction).isEqualTo(instruction);
+    }
+    @Test
+    public void testAddGlass(){
+        Glass glass = new Glass("type",10);
+        main.addGlass(glass);
+        ArgumentCaptor<Glass> glassArgumentCaptor =
+                ArgumentCaptor.forClass(Glass.class);
+        verify(glassRepository).save(glassArgumentCaptor.capture());
+        Glass capturedGlass = glassArgumentCaptor.getValue();
+        assertThat(capturedGlass).isEqualTo(glass);
+    }
+
+
 //////////////////////////////////////////////Update//////////////////////////////////////////
     @Test
     @Disabled
