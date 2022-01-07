@@ -3,7 +3,7 @@ import io.cucumber.java.sl.In;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class InstructionTest {
+class InstructionTest {
     @Test
     public void testInstructionGetAndSet(){
         Instruction instruction = new Instruction();

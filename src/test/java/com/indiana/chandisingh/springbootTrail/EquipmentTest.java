@@ -3,7 +3,7 @@ package com.indiana.chandisingh.springbootTrail;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class EquipmentTest {
+class EquipmentTest {
 
     @Test
     public void testEquipmentGettersAndSetters(){

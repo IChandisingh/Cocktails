@@ -16,10 +16,10 @@ public class Cocktail {
     private int price;
 
     public Cocktail(){}
-    public Cocktail(String name,int volume,int ABV,int price){
+    public Cocktail(String name,int volume,int abv,int price){
         this.name=name;
         this.volume=volume;
-        this.abv =ABV;
+        this.abv =abv;
         this.price=price;
     }
     /////////////////////////////GETTERS/////////////////////////////
