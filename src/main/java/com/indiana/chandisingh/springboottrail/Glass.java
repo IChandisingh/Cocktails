@@ -1,4 +1,4 @@
-package com.indiana.chandisingh.springbootTrail;
+package com.indiana.chandisingh.springboottrail;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;

@@ -1,5 +1,4 @@
-package com.indiana.chandisingh.springbootTrail;
-import com.google.gson.Gson;
+package com.indiana.chandisingh.springboottrail;
 //import org.springframework.context.annotation.EnableMBeanExport;
 
 import javax.persistence.Entity;

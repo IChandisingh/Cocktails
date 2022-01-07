@@ -1,4 +1,4 @@
-package com.indiana.chandisingh.springbootTrail;
+package com.indiana.chandisingh.springboottrail;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;

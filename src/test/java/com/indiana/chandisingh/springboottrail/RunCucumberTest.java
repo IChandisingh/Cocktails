@@ -1,4 +1,4 @@
-package com.indiana.chandisingh.springbootTrail;
+package com.indiana.chandisingh.springboottrail;
 
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;

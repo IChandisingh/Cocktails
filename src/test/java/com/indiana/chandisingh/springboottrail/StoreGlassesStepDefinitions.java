@@ -1,4 +1,4 @@
-package com.indiana.chandisingh.springbootTrail;
+package com.indiana.chandisingh.springboottrail;
 
 import io.cucumber.java.en.Given;
 

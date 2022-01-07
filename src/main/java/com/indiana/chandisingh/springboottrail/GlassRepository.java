@@ -1,4 +1,4 @@
-package com.indiana.chandisingh.springbootTrail;
+package com.indiana.chandisingh.springboottrail;
 
 import org.springframework.data.repository.CrudRepository;
 

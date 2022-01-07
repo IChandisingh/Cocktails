@@ -1,5 +1,4 @@
-package com.indiana.chandisingh.springbootTrail;
-import io.cucumber.java.sl.In;
+package com.indiana.chandisingh.springboottrail;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
