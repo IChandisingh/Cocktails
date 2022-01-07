@@ -1,6 +1,5 @@
 package com.indiana.chandisingh.springbootTrail;
 
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -232,7 +231,7 @@ public class SpringbootTrailApplication {
 												  @PathVariable int id){
 		Cocktail existingCocktail=cocktailRepository.findById(id).get();
 		existingCocktail.setPrice(price);
-		existingCocktail.setABV(ABV);
+		existingCocktail.setAbv(ABV);
 		existingCocktail.setName(name);
 		existingCocktail.setVolume(volume);
 		cocktailRepository.save(existingCocktail);
