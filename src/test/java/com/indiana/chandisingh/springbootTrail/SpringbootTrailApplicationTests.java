@@ -4,6 +4,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.verify;
 
-
+//@ExtendWith(MockitoExtensions.class)
 class SpringbootTrailApplicationTests {
 
     @Mock
@@ -38,7 +40,7 @@ class SpringbootTrailApplicationTests {
     void tearDown() throws Exception {
         autoCloseable.close();
     }
-
+///////////////////////////////////////GetAll///////////////////////////////////////////////////////
     @Test
     public void testGetAllIngredients(){
         main.getAllIngredients();
@@ -64,19 +66,35 @@ class SpringbootTrailApplicationTests {
         main.getAllInstructions();
         verify(instructionRepository).findAll();
     }
-
+////////////////////////////////////////////GetOne///////////////////////////////////////////
     @Test
     @Disabled
     public void testGetIngredients(){}
-
+///////////////////////////////////////////Add///////////////////////////////////////////////
     @Test
-    @Disabled
-    public void testAddIngredients(){}
+    public void testAddIngredients(){
+        Ingredients ingredients = new Ingredients(0,
+                                                    "name",
+                                                    "type",
+                                                    "description",
+                                                    "storage");
+        main.addIngredient(
+                "name",
+                "type",
+                0,
+                "description",
+                "storage");
 
+        ArgumentCaptor<Ingredients> ingredientsArgumentCaptor =
+                ArgumentCaptor.forClass(Ingredients.class);
+        verify(ingredientRepository).save(ingredientsArgumentCaptor.capture());
+        Ingredients capturedIngredients = ingredientsArgumentCaptor.getValue();
+    }
+//////////////////////////////////////////////Update//////////////////////////////////////////
     @Test
     @Disabled
     public void testUpdateIngredients(){}
-
+//////////////////////////////////////////Delete/////////////////////////////////////////////
     @Test
     @Disabled
     public void testDeleteIngredient(){}
