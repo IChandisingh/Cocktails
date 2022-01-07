@@ -8,6 +8,6 @@ import org.junit.runner.RunWith;
 @CucumberOptions(plugin = {"pretty"},
 
                  features = "src/test/resources/cucumber/StoreGlasses.feature")
-public class RunCucumberTest {
+class RunCucumberTest {
 
 }

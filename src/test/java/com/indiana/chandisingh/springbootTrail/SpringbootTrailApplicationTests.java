@@ -4,18 +4,12 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.verify;
 
-//@ExtendWith(MockitoExtensions.class)
 class SpringbootTrailApplicationTests {
 
     @Mock
@@ -44,37 +38,37 @@ class SpringbootTrailApplicationTests {
     }
 ///////////////////////////////////////GetAll///////////////////////////////////////////////////////
     @Test
-    public void testGetAllIngredients(){
+    void testGetAllIngredients(){
         main.getAllIngredients();
         verify(ingredientRepository).findAll();
     }
     @Test
-    public void testGetAllGarnish(){
+    void testGetAllGarnish(){
         main.getAllGarnish();
         verify(garnishRepository).findAll();
     }
     @Test
-    public void testGetAllEquipment(){
+    void testGetAllEquipment(){
         main.getAllEquipment();
         verify(equipmentRepository).findAll();
     }
     @Test
-    public void testGetAllGlasses(){
+    void testGetAllGlasses(){
         main.getAllGlasses();
         verify(glassRepository).findAll();
     }
     @Test
-    public void testGetAllInstructions(){
+    void testGetAllInstructions(){
         main.getAllInstructions();
         verify(instructionRepository).findAll();
     }
 ////////////////////////////////////////////GetOne///////////////////////////////////////////
     @Test
     @Disabled
-    public void testGetIngredients(){}
+    void testGetIngredients(){}
 ///////////////////////////////////////////Add///////////////////////////////////////////////
     @Test
-    public void testAddIngredients(){
+    void testAddIngredients(){
         Ingredients ingredients = new Ingredients(0,
                                                     "name",
                                                     "type",
@@ -90,7 +84,7 @@ class SpringbootTrailApplicationTests {
     }
 
     @Test
-    public void testAddGarnish(){
+    void testAddGarnish(){
         Garnish garnish = new Garnish("name","type","storage");
         main.addGarnish(garnish);
 
@@ -102,7 +96,7 @@ class SpringbootTrailApplicationTests {
     }
 
     @Test
-    public void testAddEquipment(){
+    void testAddEquipment(){
         Equipment equipment = new Equipment("name","type");
         main.addEquipment(equipment);
         ArgumentCaptor<Equipment> equipmentArgumentCaptor =
@@ -113,7 +107,7 @@ class SpringbootTrailApplicationTests {
     }
 
     @Test
-    public void testAddCocktail(){
+    void testAddCocktail(){
         Cocktail cocktail = new Cocktail("name",10,0,3);
         main.addCocktail(cocktail);
         ArgumentCaptor<Cocktail> cocktailArgumentCaptor =
@@ -124,7 +118,7 @@ class SpringbootTrailApplicationTests {
     }
 
     @Test
-    public void testAddInstruction(){
+    void testAddInstruction(){
         Instruction instruction = new Instruction("description");
         main.addInstruction(instruction);
         ArgumentCaptor<Instruction> instructionArgumentCaptor =
@@ -134,7 +128,7 @@ class SpringbootTrailApplicationTests {
         assertThat(capturedInstruction).isEqualTo(instruction);
     }
     @Test
-    public void testAddGlass(){
+    void testAddGlass(){
         Glass glass = new Glass("type",10);
         main.addGlass(glass);
         ArgumentCaptor<Glass> glassArgumentCaptor =
@@ -148,10 +142,10 @@ class SpringbootTrailApplicationTests {
 //////////////////////////////////////////////Update//////////////////////////////////////////
     @Test
     @Disabled
-    public void testUpdateIngredients(){}
+    void testUpdateIngredients(){}
 //////////////////////////////////////////Delete/////////////////////////////////////////////
     @Test
     @Disabled
-    public void testDeleteIngredient(){}
+    void testDeleteIngredient(){}
 
 }

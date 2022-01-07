@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class GlassTest {
     @Test
-    public void testGlassGettersAndSetters(){
+    void testGlassGettersAndSetters(){
         Glass glass = new Glass();
         glass.setVolume(10);
         glass.setType("Type");
@@ -14,7 +14,7 @@ class GlassTest {
         assertEquals(1,glass.getIdglass(),"Id not set");
     }
     @Test
-    public void testGlassConstructor(){
+    void testGlassConstructor(){
         Glass glass= new Glass("Type",10);
         assertEquals("Type",glass.getType(),"Type not set");
         assertEquals(10,glass.getVolume(),"Vol not set");

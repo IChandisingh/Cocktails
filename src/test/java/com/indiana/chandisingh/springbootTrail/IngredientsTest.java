@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class IngredientsTest {
 
     @Test
-    public void testIngredientsGettersAndSetters(){
+    void testIngredientsGettersAndSetters(){
     Ingredients ingredient = new Ingredients();
     ingredient.setAbv(0);
     ingredient.setName("Name");
@@ -21,7 +21,7 @@ class IngredientsTest {
     assertEquals(1,ingredient.getIdingredientid(),"Id not set");
 }
     @Test
-    public void testIngredientConstructor(){
+    void testIngredientConstructor(){
         Ingredients ingredient = new Ingredients(0,"Name","Type","Description","Storage");
         assertEquals("Description",ingredient.getDescription(),"Description not set");
         assertEquals("Type",ingredient.getType(),"Type not set");

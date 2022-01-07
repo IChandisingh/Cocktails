@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class GarnishTest {
     @Test
-    public void testGarnishGetandSet(){
+    void testGarnishGetandSet(){
         Garnish garnish=new Garnish();
         garnish.setName("name");
         garnish.setType("type");
@@ -16,7 +16,7 @@ class GarnishTest {
         assertEquals(1,garnish.getIdgarnish(),"Id not set");
     }
     @Test
-    public void testGarnishConstructor(){
+    void testGarnishConstructor(){
         Garnish garnish=new Garnish("name","type","storage");
         assertEquals("name",garnish.getName(),"name not set");
         assertEquals("type",garnish.getType(),"type not set");

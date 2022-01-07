@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class EquipmentTest {
 
     @Test
-    public void testEquipmentGettersAndSetters(){
+    void testEquipmentGettersAndSetters(){
         Equipment equipment = new Equipment();
         equipment.setName("Name");
         equipment.setType("Type");
@@ -16,7 +16,7 @@ class EquipmentTest {
         assertEquals(1,equipment.getIdequipment(),"Id not set");
     }
     @Test
-    public void testEquipmentConstructor(){
+    void testEquipmentConstructor(){
         Equipment equipment = new Equipment("Name","Type");
         assertEquals("Type",equipment.getType(),"Type not set");
         assertEquals("Name",equipment.getName(),"Name not set");

@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class CocktailTest {
 
     @Test
-    public void testCocktailsGettersAndSetters(){
+    void testCocktailsGettersAndSetters(){
         Cocktail cocktail = new Cocktail();
         cocktail.setVolume(10);
         cocktail.setName("Name");
@@ -20,7 +20,7 @@ class CocktailTest {
     }
 
     @Test
-    public void testCocktailConstructor(){
+    void testCocktailConstructor(){
         Cocktail cocktail = new Cocktail("Name",10,0,2);
         assertEquals(10,cocktail.getVolume(),"vol not set");
         assertEquals("Name",cocktail.getName(),"Name not set");

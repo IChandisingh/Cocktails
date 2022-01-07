@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class InstructionTest {
     @Test
-    public void testInstructionGetAndSet(){
+    void testInstructionGetAndSet(){
         Instruction instruction = new Instruction();
         instruction.setDescription("Description");
         instruction.setIdinstruction(1);
@@ -13,7 +13,7 @@ class InstructionTest {
         assertEquals(1,instruction.getIdinstruction(),"Id not set");
     }
     @Test
-    public void testInstructionConstructor(){
+    void testInstructionConstructor(){
         Instruction instruction = new Instruction("Description");
         assertEquals("Description",instruction.getDescription(),"Description not set");
     }
