@@ -41,6 +41,8 @@ public class SpringbootTrailApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SpringbootTrailApplication.class, args);}
 
+	String saved ="Saved";
+	String deleted="Deleted";
 
 	/////////////////INGREDIENTS////////////////////////////////////////////////////
 
@@ -56,7 +58,7 @@ public class SpringbootTrailApplication {
 	@PostMapping("/addIngredient")
 	public @ResponseBody String addIngredient (Ingredients ingredient){
 		ingredientRepository.save(ingredient);
-		return "Saved";
+		return saved;
 	}
 	@PutMapping("/updateIngredient/{id}")
 	public @ResponseBody Ingredients updateIngredient (@RequestParam String name,
@@ -76,7 +78,7 @@ public class SpringbootTrailApplication {
 	public @ResponseBody String deleteIngredient(@RequestParam int idingredientid){
 		Ingredients existingIngredient=ingredientRepository.findById(idingredientid).get();
 		ingredientRepository.delete(existingIngredient);
-		return "Deleted";
+		return deleted;
 	}
 
 	/////////////////////////GARNISH//////////////////////////////////////////////
@@ -93,7 +95,7 @@ public class SpringbootTrailApplication {
 	@PostMapping("/addGarnish")
 	public @ResponseBody String addGarnish (Garnish garnish){
 		garnishRepository.save(garnish);
-		return "Saved";
+		return saved;
 	}
 
 	@PutMapping("/updateGarnish/{id}")
@@ -112,7 +114,7 @@ public class SpringbootTrailApplication {
 	public @ResponseBody String deleteGarnish(@RequestParam int idgarnish){
 		Garnish existingGarnish=garnishRepository.findById(idgarnish).get();
 		garnishRepository.delete(existingGarnish);
-		return "Deleted";
+		return deleted;
 	}
 	//////////////////////////////////////Equipment/////////////////////////////////////////////
 
@@ -146,7 +148,7 @@ public class SpringbootTrailApplication {
 	public @ResponseBody String deleteEquipment(@RequestParam int idequipment){
 		Equipment existingEquipment=equipmentRepository.findById(idequipment).get();
 		equipmentRepository.delete(existingEquipment);
-		return "Deleted";
+		return deleted;
 	}
 	/////////////////////////////GLASS////////////////////////////////////////////
 
@@ -161,7 +163,7 @@ public class SpringbootTrailApplication {
 	@PostMapping("/addGlass")
 	public @ResponseBody String addGlass (Glass glass){
 		glassRepository.save(glass);
-		return "Saved";
+		return saved;
 	}
 	@PutMapping("/updateGlass/{id}")
 	public @ResponseBody Glass updateGlass (@RequestParam String type,
@@ -177,7 +179,7 @@ public class SpringbootTrailApplication {
 	public @ResponseBody String deleteGlass(@RequestParam int idglass){
 		Glass existingGlass=glassRepository.findById(idglass).get();
 		glassRepository.delete(existingGlass);
-		return "Deleted";
+		return deleted;
 	}
 	//////////////////////////INSTRUCTION/////////////////////////////////////////
 	@GetMapping("/getAllInstructions")
@@ -191,7 +193,7 @@ public class SpringbootTrailApplication {
 	@PostMapping("/addInstruction")
 	public @ResponseBody String addInstruction (Instruction instruction){
 		instructionRepository.save(instruction);
-		return "Saved";
+		return saved;
 	}
 	@PutMapping("/updateInstruction/{id}")
 	public @ResponseBody Instruction updateInstruction (@RequestParam String description,
@@ -205,7 +207,7 @@ public class SpringbootTrailApplication {
 	public @ResponseBody String deleteInstruction(@RequestParam int idinstruction){
 		Instruction existingInstruction=instructionRepository.findById(idinstruction).get();
 		instructionRepository.delete(existingInstruction);
-		return "Deleted";
+		return deleted;
 	}
 	/////////////////////////COCKTAIL////////////////////////////////////////////
 
@@ -221,17 +223,17 @@ public class SpringbootTrailApplication {
 	@PostMapping("/addCocktail")
 	public @ResponseBody String addCocktail (Cocktail cocktail){
 		cocktailRepository.save(cocktail);
-		return "Saved";
+		return saved;
 	}
 	@PutMapping("/updateCocktail/{id}")
 	public @ResponseBody Cocktail updateCocktail (@RequestParam String name,
 												  @RequestParam int volume,
-												  @RequestParam int ABV,
+												  @RequestParam int abv,
 												  @RequestParam int price,
 												  @PathVariable int id){
 		Cocktail existingCocktail=cocktailRepository.findById(id).get();
 		existingCocktail.setPrice(price);
-		existingCocktail.setAbv(ABV);
+		existingCocktail.setAbv(abv);
 		existingCocktail.setName(name);
 		existingCocktail.setVolume(volume);
 		cocktailRepository.save(existingCocktail);
@@ -241,7 +243,7 @@ public class SpringbootTrailApplication {
 	public @ResponseBody String deleteCocktail(@RequestParam int idcocktail){
 		Cocktail existingCocktail=cocktailRepository.findById(idcocktail).get();
 		cocktailRepository.delete(existingCocktail);
-		return "Deleted";
+		return deleted;
 	}
 
 
