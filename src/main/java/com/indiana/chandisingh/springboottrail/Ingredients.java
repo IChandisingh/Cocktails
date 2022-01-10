@@ -1,5 +1,4 @@
 package com.indiana.chandisingh.springboottrail;
-//import org.springframework.context.annotation.EnableMBeanExport;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
