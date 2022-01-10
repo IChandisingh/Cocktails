@@ -4,5 +4,8 @@ Feature: store glasses
     SO THAT they can be accessed later
 
     Scenario: Successfully add new glass to glass database
-        Given I have set a type
+        Given The app is running
+        And I have set a type
         And I have set a volume
+        When I add a glass to the database
+        Then It should return saved

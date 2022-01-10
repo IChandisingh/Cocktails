@@ -1,13 +1,16 @@
 package com.indiana.chandisingh.springboottrail;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
+
+import java.util.Optional;
+
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.in;
+import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
 
 class SpringbootTrailApplicationTests {
@@ -146,7 +149,53 @@ class SpringbootTrailApplicationTests {
     }
 //////////////////////////////////////////Delete/////////////////////////////////////////////
     @Test
-    @Disabled
-    void testDeleteIngredient(){}
+    void testDeleteIngredient(){
+
+        Ingredients ingredients = new Ingredients(0,
+                "name",
+                "type",
+                "description",
+                "storage");
+        given(ingredientRepository.findById(ingredients.getIdingredientid())).willReturn(Optional.of(ingredients));
+        Assertions.assertEquals("Deleted",main.deleteIngredient(ingredients.getIdingredientid()));
+        verify(ingredientRepository).delete(ingredients);
+    }
+    @Test
+    void testDeleteCocktail(){
+
+        Cocktail cocktail = new Cocktail("name",10,0,3);
+        given(cocktailRepository.findById(cocktail.getIdcocktail())).willReturn(Optional.of(cocktail));
+        Assertions.assertEquals("Deleted",main.deleteCocktail(cocktail.getIdcocktail()));
+        verify(cocktailRepository).delete(cocktail);
+    }
+    @Test
+    void testDeleteInstruction(){
+        Instruction instruction = new Instruction("description");
+        given(instructionRepository.findById(instruction.getIdinstruction())).willReturn(Optional.of(instruction));
+        Assertions.assertEquals("Deleted",main.deleteInstruction(instruction.getIdinstruction()));
+        verify(instructionRepository).delete(instruction);
+    }
+    @Test
+    void testDeleteEquipment(){
+        Equipment equipment = new Equipment("name","type");
+        given(equipmentRepository.findById(equipment.getIdequipment())).willReturn(Optional.of(equipment));
+        Assertions.assertEquals("Deleted",main.deleteEquipment(equipment.getIdequipment()));
+        verify(equipmentRepository).delete(equipment);
+    }
+    @Test
+    void testDeleteGarnish(){
+        Garnish garnish = new Garnish("name","type","storage");
+        given(garnishRepository.findById(garnish.getIdgarnish())).willReturn(Optional.of(garnish));
+        Assertions.assertEquals("Deleted",main.deleteGarnish(garnish.getIdgarnish()));
+        verify(garnishRepository).delete(garnish);
+    }
+    @Test
+    void testDeleteGlass(){
+        Glass glass = new Glass("type",10);
+        given(glassRepository.findById(glass.getIdglass())).willReturn(Optional.of(glass));
+        Assertions.assertEquals("Deleted",main.deleteGlass(glass.getIdglass()));
+        verify(glassRepository).delete(glass);
+    }
+
 
 }
