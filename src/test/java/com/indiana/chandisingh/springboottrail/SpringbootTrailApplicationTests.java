@@ -1,5 +1,6 @@
 package com.indiana.chandisingh.springboottrail;
 
+import io.cucumber.java.bs.I;
 import org.junit.jupiter.api.*;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
@@ -67,8 +68,47 @@ class SpringbootTrailApplicationTests {
     }
 ////////////////////////////////////////////GetOne///////////////////////////////////////////
     @Test
-    @Disabled
-    void testGetIngredients(){}
+    void testGetIngredient(){
+        Ingredients ingredients = new Ingredients(0, "name", "type", "description", "storage");
+        given(ingredientRepository.findById(ingredients.getIdingredientid())).willReturn(Optional.of(ingredients));
+        Assertions.assertEquals(ingredients,main.getIngredient(ingredients.getIdingredientid()) );
+        verify(ingredientRepository).findById(ingredients.getIdingredientid());
+    }
+    @Test
+    void testGetCocktail(){
+        Cocktail cocktail=new Cocktail("name",10,0,3);
+        given(cocktailRepository.findById(cocktail.getIdcocktail())).willReturn(Optional.of(cocktail));
+        Assertions.assertEquals(cocktail,main.getCocktail(cocktail.getIdcocktail()));
+        verify(cocktailRepository).findById(cocktail.getIdcocktail());
+    }
+    @Test
+    void testGetInstruction(){
+        Instruction instruction= new Instruction("description");
+        given(instructionRepository.findById(instruction.getIdinstruction())).willReturn(Optional.of(instruction));
+        Assertions.assertEquals(instruction,main.getInstruction(instruction.getIdinstruction()));
+        verify(instructionRepository).findById(instruction.getIdinstruction());
+    }
+    @Test
+    void testGetEquipment(){
+        Equipment equipment = new Equipment("name","type");
+        given(equipmentRepository.findById(equipment.getIdequipment())).willReturn(Optional.of(equipment));
+        Assertions.assertEquals(equipment,main.getEquipment(equipment.getIdequipment()));
+        verify(equipmentRepository).findById(equipment.getIdequipment());
+    }
+    @Test
+    void testGetGarnish(){
+        Garnish garnish= new Garnish("name","type","storage");
+        given(garnishRepository.findById(garnish.getIdgarnish())).willReturn(Optional.of(garnish));
+        Assertions.assertEquals(garnish,main.getGarnish(garnish.getIdgarnish()));
+        verify(garnishRepository).findById(garnish.getIdgarnish());
+    }
+    @Test
+    void testGetGlass(){
+        Glass glass= new Glass("type", 10);
+        given(glassRepository.findById(glass.getIdglass())).willReturn(Optional.of(glass));
+        Assertions.assertEquals(glass,main.getGlass(glass.getIdglass()));
+        verify(glassRepository).findById(glass.getIdglass());
+    }
 ///////////////////////////////////////////Add///////////////////////////////////////////////
     @Test
     void testAddIngredients(){
