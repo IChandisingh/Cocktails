@@ -66,6 +66,11 @@ class SpringbootTrailApplicationTests {
         main.getAllInstructions();
         verify(instructionRepository).findAll();
     }
+    @Test
+    void testGetAllCocktails(){
+        main.getAllCocktails();
+        verify(cocktailRepository).findAll();
+    }
 ////////////////////////////////////////////GetOne///////////////////////////////////////////
     @Test
     void testGetIngredient(){
