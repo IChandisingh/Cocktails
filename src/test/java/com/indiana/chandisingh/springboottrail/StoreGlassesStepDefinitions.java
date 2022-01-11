@@ -71,10 +71,4 @@ public class StoreGlassesStepDefinitions {
         Assertions.assertEquals(400, response.getStatusCode());
     }
 
-
-
-
-
-
-
 }
