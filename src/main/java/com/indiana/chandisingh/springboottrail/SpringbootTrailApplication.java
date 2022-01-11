@@ -97,14 +97,11 @@ public class SpringbootTrailApplication {
 	}
 
 	@PutMapping("/updateGarnish/{id}")
-	public @ResponseBody Garnish updateGarnish (@RequestParam String name,
-													   @RequestParam String type,
-													   @RequestParam String storage,
-													   @PathVariable int id){
+	public @ResponseBody Garnish updateGarnish (Garnish garnish, @PathVariable int id){
 		Garnish existingGarnish=garnishRepository.findById(id).get();
-		existingGarnish.setStorage(storage);
-		existingGarnish.setType(type);
-		existingGarnish.setName(name);
+		existingGarnish.setStorage(garnish.getStorage());
+		existingGarnish.setType(garnish.getType());
+		existingGarnish.setName(garnish.getName());
 		garnishRepository.save(existingGarnish);
 		return existingGarnish;
 	}
@@ -133,12 +130,11 @@ public class SpringbootTrailApplication {
 		return equipment;
 	}
 	@PutMapping("/updateEquipment/{id}")
-	public @ResponseBody Equipment updateEquipment (@RequestParam String name,
-												@RequestParam String type,
+	public @ResponseBody Equipment updateEquipment (Equipment equipment,
 												@PathVariable int id){
 		Equipment existingEquipment=equipmentRepository.findById(id).get();
-		existingEquipment.setType(type);
-		existingEquipment.setName(name);
+		existingEquipment.setType(equipment.getType());
+		existingEquipment.setName(equipment.getName());
 		equipmentRepository.save(existingEquipment);
 		return existingEquipment;
 	}
@@ -164,12 +160,10 @@ public class SpringbootTrailApplication {
 		return glass;
 	}
 	@PutMapping("/updateGlass/{id}")
-	public @ResponseBody Glass updateGlass (@RequestParam String type,
-													@RequestParam int volume,
-													@PathVariable int id){
+	public @ResponseBody Glass updateGlass (Glass glass, @PathVariable int id){
 		Glass existingGlass=glassRepository.findById(id).get();
-		existingGlass.setType(type);
-		existingGlass.setVolume(volume);
+		existingGlass.setType(glass.getType());
+		existingGlass.setVolume(glass.getVolume());
 		glassRepository.save(existingGlass);
 		return existingGlass;
 	}
@@ -194,10 +188,10 @@ public class SpringbootTrailApplication {
 		return saved;
 	}
 	@PutMapping("/updateInstruction/{id}")
-	public @ResponseBody Instruction updateInstruction (@RequestParam String description,
+	public @ResponseBody Instruction updateInstruction (Instruction instruction,
 														@PathVariable int id){
 		Instruction existingInstruction=instructionRepository.findById(id).get();
-		existingInstruction.setDescription(description);
+		existingInstruction.setDescription(instruction.getDescription());
 		instructionRepository.save(existingInstruction);
 		return existingInstruction;
 	}
@@ -224,16 +218,12 @@ public class SpringbootTrailApplication {
 		return cocktail;
 	}
 	@PutMapping("/updateCocktail/{id}")
-	public @ResponseBody Cocktail updateCocktail (@RequestParam String name,
-												  @RequestParam int volume,
-												  @RequestParam int abv,
-												  @RequestParam int price,
-												  @PathVariable int id){
+	public @ResponseBody Cocktail updateCocktail (Cocktail cocktail, @PathVariable int id){
 		Cocktail existingCocktail=cocktailRepository.findById(id).get();
-		existingCocktail.setPrice(price);
-		existingCocktail.setAbv(abv);
-		existingCocktail.setName(name);
-		existingCocktail.setVolume(volume);
+		existingCocktail.setPrice(cocktail.getPrice());
+		existingCocktail.setAbv(cocktail.getAbv());
+		existingCocktail.setName(cocktail.getName());
+		existingCocktail.setVolume(cocktail.getVolume());
 		cocktailRepository.save(existingCocktail);
 		return existingCocktail;
 	}

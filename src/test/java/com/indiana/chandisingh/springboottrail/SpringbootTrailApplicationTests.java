@@ -1,5 +1,7 @@
 package com.indiana.chandisingh.springboottrail;
 //import org.junit.jupiter.api.Test;
+import io.cucumber.java.an.E;
+import io.cucumber.java.sl.In;
 import org.testng.annotations.Test;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.AfterMethod;
@@ -206,6 +208,62 @@ class SpringbootTrailApplicationTests {
         verify(ingredientRepository).save(ingredients);
         Assertions.assertEquals(ingredients,capturedIngredient);
     }
+    @Test
+    void testUpdateCocktail(){
+        Cocktail cocktail=new Cocktail("name",10,0,4);
+        given(cocktailRepository.findById(cocktail.getIdcocktail())).willReturn(Optional.of(cocktail));
+        cocktail.setName("Name");
+
+        Cocktail capturedCocktail= main.updateCocktail(cocktail,cocktail.getIdcocktail());
+
+        verify(cocktailRepository).save(cocktail);
+        Assertions.assertEquals(cocktail,capturedCocktail);
+    }
+    @Test
+    void testUpdateInstruction(){
+        Instruction instruction=new Instruction("description");
+        given(instructionRepository.findById(instruction.getIdinstruction())).willReturn(Optional.of(instruction));
+        instruction.setDescription("Description");
+
+        Instruction capturedInstruction= main.updateInstruction(instruction,instruction.getIdinstruction());
+
+        verify(instructionRepository).save(instruction);
+        Assertions.assertEquals(instruction,capturedInstruction);
+    }
+    @Test
+    void testUpdateEquipment(){
+        Equipment equipment=new Equipment("name","type");
+        given(equipmentRepository.findById(equipment.getIdequipment())).willReturn(Optional.of(equipment));
+        equipment.setName("Name");
+
+        Equipment capturedEquipment= main.updateEquipment(equipment,equipment.getIdequipment());
+
+        verify(equipmentRepository).save(equipment);
+        Assertions.assertEquals(equipment,capturedEquipment);
+    }
+    @Test
+    void testUpdateGarnish(){
+        Garnish garnish = new Garnish("name","type", "storage");
+        given(garnishRepository.findById(garnish.getIdgarnish())).willReturn(Optional.of(garnish));
+        garnish.setName("Name");
+
+        Garnish capturedGarnish= main.updateGarnish(garnish,garnish.getIdgarnish());
+
+        verify(garnishRepository).save(garnish);
+        Assertions.assertEquals(garnish,capturedGarnish);
+    }
+    @Test
+    void testUpdateGlass(){
+        Glass glass = new Glass("type",10);
+        given(glassRepository.findById(glass.getIdglass())).willReturn(Optional.of(glass));
+        glass.setType("Type");
+
+        Glass capturedGlass= main.updateGlass(glass,glass.getIdglass());
+
+        verify(glassRepository).save(glass);
+        Assertions.assertEquals(glass,capturedGlass);
+    }
+
 //////////////////////////////////////////Delete/////////////////////////////////////////////
     @Test
     void testDeleteIngredient(){
