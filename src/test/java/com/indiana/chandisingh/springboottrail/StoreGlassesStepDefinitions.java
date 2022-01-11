@@ -55,10 +55,8 @@ public class StoreGlassesStepDefinitions {
     }
     @Given("I have not set a volume")
     public void i_have_not_set_a_volume()  {
-
         //no vol set
     }
-
     @When("I add a glass to the database")
     public void i_add_a_glass_to_the_database() {
        response=RestAssured.post("http://18.222.118.217:8080/cocktails/addGlass?type="+glass.getType()+"&volume="+glass.getVolume());
