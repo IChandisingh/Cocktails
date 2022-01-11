@@ -57,9 +57,21 @@ public class StoreGlassesStepDefinitions {
     public void i_have_not_set_a_volume()  {
         //no vol set
     }
+    @Given("The glass is in the database")
+    public void the_glass_is_in_the_database() {
+        // Write code here that turns the phrase above into concrete actions
+    }
     @When("I add a glass to the database")
     public void i_add_a_glass_to_the_database() {
        response=RestAssured.post("http://18.222.118.217:8080/cocktails/addGlass?type="+glass.getType()+"&volume="+glass.getVolume());
+    }
+    @When("I send a request to edit the glass")
+    public void i_send_a_request_to_edit_the_glass() {
+        // Write code here that turns the phrase above into concrete actions
+    }
+    @Then("It should return a json of the new information")
+    public void it_should_return_a_json_of_the_new_information() {
+        // Write code here that turns the phrase above into concrete actions
     }
     @Then("It should return saved")
     public void it_should_return_saved() {
@@ -71,4 +83,5 @@ public class StoreGlassesStepDefinitions {
         Assertions.assertEquals(400, response.getStatusCode());
     }
 
+    
 }
