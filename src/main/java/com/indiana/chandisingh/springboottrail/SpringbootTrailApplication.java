@@ -62,16 +62,13 @@ public class SpringbootTrailApplication {
 		return ingredient;
 	}
 	@PutMapping("/updateIngredient/{id}")
-	public @ResponseBody Ingredients updateIngredient (@RequestParam String name,
-												  @RequestParam String type,
-												  @RequestParam String description,
-												  @RequestParam String storage,
+	public @ResponseBody Ingredients updateIngredient (Ingredients ingredient,
 												  @PathVariable int id){
 		Ingredients existingIngredient=ingredientRepository.findById(id).get();
-		existingIngredient.setStorage(storage);
-		existingIngredient.setType(type);
-		existingIngredient.setName(name);
-		existingIngredient.setDescription(description);
+		existingIngredient.setStorage(ingredient.getStorage());
+		existingIngredient.setType(ingredient.getType());
+		existingIngredient.setName(ingredient.getName());
+		existingIngredient.setDescription(ingredient.getDescription());
 		ingredientRepository.save(existingIngredient);
 		return existingIngredient;
 	}

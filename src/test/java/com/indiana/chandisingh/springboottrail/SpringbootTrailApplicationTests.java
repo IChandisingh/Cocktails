@@ -196,7 +196,15 @@ class SpringbootTrailApplicationTests {
 //////////////////////////////////////////////Update//////////////////////////////////////////
     @Test
     void testUpdateIngredients(){
+        Ingredients ingredients = new Ingredients(0, "name", "type", "description", "storage");
+        given(ingredientRepository.findById(ingredients.getIdingredientid())).willReturn(Optional.of(ingredients));
+        ingredients.setName("Name");
 
+        ArgumentCaptor<Ingredients> ingredientsArgumentCaptor = ArgumentCaptor.forClass(Ingredients.class);
+        Ingredients capturedIngredient= main.updateIngredient(ingredients,ingredients.getIdingredientid());
+
+        verify(ingredientRepository).save(ingredients);
+        Assertions.assertEquals(ingredients,capturedIngredient);
     }
 //////////////////////////////////////////Delete/////////////////////////////////////////////
     @Test
