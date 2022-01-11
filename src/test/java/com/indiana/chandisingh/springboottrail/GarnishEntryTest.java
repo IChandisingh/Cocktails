@@ -1,8 +1,12 @@
+package com.indiana.chandisingh.springboottrail;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.Test;
+//import org.junit.Test;
 import org.junit.Before;
 import org.junit.After;
+import org.testng.annotations.Test;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.AfterMethod;
 import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.core.IsNot.not;
@@ -27,14 +31,14 @@ public class GarnishEntryTest {
   private WebDriver driver;
   private Map<String, Object> vars;
   JavascriptExecutor js;
-  @Before
+  @BeforeMethod
   public void setUp() {
     WebDriverManager.chromedriver().setup();
     driver = new ChromeDriver();
     js = (JavascriptExecutor) driver;
     vars = new HashMap<String, Object>();
   }
-  @After
+  @AfterMethod
   public void tearDown() {
     driver.quit();
   }

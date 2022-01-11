@@ -1,7 +1,13 @@
 package com.indiana.chandisingh.springboottrail;
+//import org.junit.jupiter.api.Test;
+import org.testng.annotations.Test;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.AfterMethod;
 
 import io.cucumber.java.bs.I;
-import org.junit.jupiter.api.*;
+//import org.junit.jupiter.api.AfterEach;
+//import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Assertions;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -31,12 +37,12 @@ class SpringbootTrailApplicationTests {
 
     private AutoCloseable autoCloseable;
     private SpringbootTrailApplication main;
-    @BeforeEach
+    @BeforeMethod
     void setUp(){
         autoCloseable= MockitoAnnotations.openMocks(this);
         main=new SpringbootTrailApplication(ingredientRepository,garnishRepository,equipmentRepository,instructionRepository,glassRepository,cocktailRepository);
     }
-    @AfterEach
+    @AfterMethod
     void tearDown() throws Exception {
         autoCloseable.close();
     }
