@@ -4,6 +4,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 //import org.junit.Test;
 import org.junit.Before;
 import org.junit.After;
+import org.junit.jupiter.api.Disabled;
 import org.testng.annotations.Test;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.AfterMethod;
@@ -27,6 +28,7 @@ import org.openqa.selenium.Keys;
 import java.util.*;
 import java.net.MalformedURLException;
 import java.net.URL;
+@Disabled
 public class GarnishEntryTest {
   private WebDriver driver;
   private Map<String, Object> vars;
