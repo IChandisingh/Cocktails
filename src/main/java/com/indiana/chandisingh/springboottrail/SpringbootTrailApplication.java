@@ -5,6 +5,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 
 @SpringBootApplication
 @RestController
@@ -53,8 +55,9 @@ public class SpringbootTrailApplication {
 	}
 
 	@GetMapping("/getIngredient")
-	public @ResponseBody Ingredients getIngredient(@RequestParam int id){
-		return ingredientRepository.findById(id).get();
+	public @ResponseBody Optional<Ingredients> getIngredient(@RequestParam int id){
+		Optional<Ingredients> optIngredient= Optional.of(ingredientRepository.findById(id).get());
+		return optIngredient;
 	}
 	@PostMapping("/addIngredient")
 	public @ResponseBody Ingredients addIngredient (Ingredients ingredient){
@@ -62,7 +65,7 @@ public class SpringbootTrailApplication {
 		return ingredient;
 	}
 	@PutMapping("/updateIngredient/{id}")
-	public @ResponseBody Ingredients updateIngredient (Ingredients ingredient,
+	public @ResponseBody Optional<Ingredients> updateIngredient (Ingredients ingredient,
 												  @PathVariable int id){
 		Ingredients existingIngredient=ingredientRepository.findById(id).get();
 		existingIngredient.setStorage(ingredient.getStorage());
@@ -70,7 +73,8 @@ public class SpringbootTrailApplication {
 		existingIngredient.setName(ingredient.getName());
 		existingIngredient.setDescription(ingredient.getDescription());
 		ingredientRepository.save(existingIngredient);
-		return existingIngredient;
+		Optional<Ingredients> optionalIngredients = Optional.of(existingIngredient);
+		return optionalIngredients;
 	}
 	@DeleteMapping("/deleteIngredient")
 	public @ResponseBody String deleteIngredient(@RequestParam int idingredientid){
@@ -87,8 +91,9 @@ public class SpringbootTrailApplication {
 	}
 
 	@GetMapping("/getGarnish")
-	public @ResponseBody Garnish getGarnish(@RequestParam int id){
-		return garnishRepository.findById(id).get();
+	public @ResponseBody Optional<Garnish> getGarnish(@RequestParam int id){
+		Optional<Garnish> optionalGarnish= Optional.of(garnishRepository.findById(id).get());
+		return optionalGarnish;
 	}
 	@PostMapping("/addGarnish")
 	public @ResponseBody Garnish addGarnish (Garnish garnish){
@@ -120,8 +125,9 @@ public class SpringbootTrailApplication {
 	}
 
 	@GetMapping("/getEquipment")
-	public @ResponseBody Equipment getEquipment(@RequestParam int id){
-		return equipmentRepository.findById(id).get();
+	public @ResponseBody Optional<Equipment> getEquipment(@RequestParam int id){
+		Optional<Equipment> optionalEquipment = Optional.of(equipmentRepository.findById(id).get());
+		return optionalEquipment;
 	}
 
 	@PostMapping("/addEquipment")
@@ -151,8 +157,9 @@ public class SpringbootTrailApplication {
 		return glassRepository.findAll();
 	}
 	@GetMapping("/getGlass")
-	public @ResponseBody Glass getGlass(@RequestParam int id){
-		return glassRepository.findById(id).get();
+	public @ResponseBody Optional<Glass> getGlass(@RequestParam int id){
+		Optional<Glass> optionalGlass = Optional.of(glassRepository.findById(id).get());
+		return optionalGlass;
 	}
 	@PostMapping("/addGlass")
 	public @ResponseBody Glass addGlass (Glass glass){
@@ -179,8 +186,9 @@ public class SpringbootTrailApplication {
 		return instructionRepository.findAll();
 	}
 	@GetMapping("/getInstruction")
-	public @ResponseBody Instruction getInstruction(@RequestParam int id){
-		return instructionRepository.findById(id).get();
+	public @ResponseBody Optional<Instruction> getInstruction(@RequestParam int id){
+		Optional<Instruction> optionalInstruction = Optional.of(instructionRepository.findById(id).get());
+		return optionalInstruction;
 	}
 	@PostMapping("/addInstruction")
 	public @ResponseBody String addInstruction (Instruction instruction){
@@ -209,8 +217,9 @@ public class SpringbootTrailApplication {
 		return cocktailRepository.findAll();
 	}
 	@GetMapping("/geCocktail")
-	public @ResponseBody Cocktail getCocktail(@RequestParam int id){
-		return cocktailRepository.findById(id).get();
+	public @ResponseBody Optional<Cocktail> getCocktail(@RequestParam int id){
+		Optional<Cocktail> optionalCocktail= Optional.of(cocktailRepository.findById(id).get());
+		return optionalCocktail;
 	}
 	@PostMapping("/addCocktail")
 	public @ResponseBody Cocktail addCocktail (Cocktail cocktail){
