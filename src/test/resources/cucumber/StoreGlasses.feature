@@ -1,5 +1,5 @@
 Feature: store glasses
-    AS AN employee at a bar
+    AS A Customer
     I WANT to store glasses
     SO THAT they can be accessed later
 
@@ -12,6 +12,7 @@ Feature: store glasses
 
     Scenario: Successfully edit a glass in database
         Given The app is running
+        And the glass is in the database
         And I have set a type
         And I have set a volume
         When I send a request to edit the glass
@@ -19,7 +20,7 @@ Feature: store glasses
 
     Scenario: Successfully delete a glass from database
         Given The app is running
-        And a glass with the specific id has been added
+        And the glass is in the database
         When I send a request to delete it
         Then it should return deleted
 

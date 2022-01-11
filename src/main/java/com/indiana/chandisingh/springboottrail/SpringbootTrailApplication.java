@@ -57,9 +57,9 @@ public class SpringbootTrailApplication {
 		return ingredientRepository.findById(id).get();
 	}
 	@PostMapping("/addIngredient")
-	public @ResponseBody String addIngredient (Ingredients ingredient){
+	public @ResponseBody Ingredients addIngredient (Ingredients ingredient){
 		ingredientRepository.save(ingredient);
-		return saved;
+		return ingredient;
 	}
 	@PutMapping("/updateIngredient/{id}")
 	public @ResponseBody Ingredients updateIngredient (@RequestParam String name,
@@ -94,9 +94,9 @@ public class SpringbootTrailApplication {
 		return garnishRepository.findById(id).get();
 	}
 	@PostMapping("/addGarnish")
-	public @ResponseBody String addGarnish (Garnish garnish){
+	public @ResponseBody Garnish addGarnish (Garnish garnish){
 		garnishRepository.save(garnish);
-		return saved;
+		return garnish;
 	}
 
 	@PutMapping("/updateGarnish/{id}")
@@ -131,9 +131,9 @@ public class SpringbootTrailApplication {
 	}
 
 	@PostMapping("/addEquipment")
-	public @ResponseBody String addEquipment (Equipment equipment) {
+	public @ResponseBody Equipment addEquipment (Equipment equipment) {
 		equipmentRepository.save(equipment);
-		return "Saved";
+		return equipment;
 	}
 	@PutMapping("/updateEquipment/{id}")
 	public @ResponseBody Equipment updateEquipment (@RequestParam String name,
@@ -162,9 +162,9 @@ public class SpringbootTrailApplication {
 		return glassRepository.findById(id).get();
 	}
 	@PostMapping("/addGlass")
-	public @ResponseBody String addGlass (Glass glass){
+	public @ResponseBody Glass addGlass (Glass glass){
 		glassRepository.save(glass);
-		return saved;
+		return glass;
 	}
 	@PutMapping("/updateGlass/{id}")
 	public @ResponseBody Glass updateGlass (@RequestParam String type,
@@ -222,9 +222,9 @@ public class SpringbootTrailApplication {
 		return cocktailRepository.findById(id).get();
 	}
 	@PostMapping("/addCocktail")
-	public @ResponseBody String addCocktail (Cocktail cocktail){
+	public @ResponseBody Cocktail addCocktail (Cocktail cocktail){
 		cocktailRepository.save(cocktail);
-		return saved;
+		return cocktail;
 	}
 	@PutMapping("/updateCocktail/{id}")
 	public @ResponseBody Cocktail updateCocktail (@RequestParam String name,
