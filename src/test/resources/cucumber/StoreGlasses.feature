@@ -16,3 +16,8 @@ Feature: store glasses
         When I add a glass to the database
         Then it should return error
 
+    Scenario: Successfully edit a glass in database
+        Given The app is running
+        And The glass is in the database
+        When I send a request to edit the glass
+        Then It should return a json of the new information
