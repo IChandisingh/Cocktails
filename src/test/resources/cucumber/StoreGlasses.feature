@@ -1,6 +1,7 @@
 Feature: store glasses
     AS A Customer
     I WANT to store glasses
+    AND update glasses
     SO THAT they can be accessed later
 
     Scenario: Successfully add new glass to glass database
@@ -23,4 +24,10 @@ Feature: store glasses
         And the glass is in the database
         When I send a request to delete it
         Then it should return deleted
+
+    Scenario: Try to delete a glass that is not in the database
+        Given The app is running
+        And The glass is not in the database
+        When I send a request to delete it
+        Then it should return error
 

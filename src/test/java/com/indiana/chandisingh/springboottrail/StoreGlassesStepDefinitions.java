@@ -62,6 +62,13 @@ public class StoreGlassesStepDefinitions {
         glass.setVolume(vol);
         dbGlass=RestAssured.post("http://18.222.118.217:8080/cocktails/addGlass?type="+glass.getType()+"&volume="+glass.getVolume()).then().extract().as(Glass.class);
     }
+    @Given("The glass is not in the database")
+    public void the_glass_is_not_in_the_database() {
+        glass.setType(name);
+        glass.setVolume(vol);
+        dbGlass=RestAssured.post("http://18.222.118.217:8080/cocktails/addGlass?type="+glass.getType()+"&volume="+glass.getVolume()).then().extract().as(Glass.class);
+        RestAssured.delete("http://18.222.118.217:8080/cocktails/deleteGlass?idglass="+dbGlass.getIdglass());
+    }
     @When("I add a glass to the database")
     public void i_add_a_glass_to_the_database() {
        response=RestAssured.post("http://18.222.118.217:8080/cocktails/addGlass?type="+glass.getType()+"&volume="+glass.getVolume());
@@ -91,7 +98,7 @@ public class StoreGlassesStepDefinitions {
 
     @Then("it should return error")
     public void it_should_return_error() {
-        //Assertions.assertEquals(400, response.getStatusCode());
+        Assertions.assertEquals(500, response.getStatusCode());
     }
     @Then("it should return deleted")
     public void it_should_return_deleted() {
