@@ -9,3 +9,10 @@ Feature: store glasses
         And I have set a volume
         When I add a glass to the database
         Then It should return saved
+
+    Scenario: Fail to add a new glass
+        Given The app is running
+        And I have set a type
+        And I have not set a volume
+        When I add a glass to the database
+        Then It should return error

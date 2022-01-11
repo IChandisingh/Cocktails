@@ -37,7 +37,7 @@ public class Glass {
     public void setIdglass(int idglass) {
         this.idglass = idglass;
     }
-    public void setVolume(int volume) {
+    public void setVolume(Integer volume) {
         this.volume = volume;
     }
 
