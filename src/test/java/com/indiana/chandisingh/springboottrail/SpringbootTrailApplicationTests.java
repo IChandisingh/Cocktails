@@ -78,49 +78,43 @@ class SpringbootTrailApplicationTests {
     @Test
     void testGetIngredient(){
         Ingredients ingredients = new Ingredients(0, "name", "type", "description", "storage");
-        Optional<Ingredients> optionalIngredients= Optional.of(ingredients);
         given(ingredientRepository.findById(ingredients.getIdingredientid())).willReturn(Optional.of(ingredients));
-        Assertions.assertEquals(optionalIngredients,main.getIngredient(ingredients.getIdingredientid()) );
+        Assertions.assertEquals(ingredients,main.getIngredient(ingredients.getIdingredientid()) );
         verify(ingredientRepository).findById(ingredients.getIdingredientid());
     }
     @Test
     void testGetCocktail(){
         Cocktail cocktail=new Cocktail("name",10,0,3);
-        Optional<Cocktail> optionalCocktail= Optional.of(cocktail);
         given(cocktailRepository.findById(cocktail.getIdcocktail())).willReturn(Optional.of(cocktail));
-        Assertions.assertEquals(optionalCocktail,main.getCocktail(cocktail.getIdcocktail()));
+        Assertions.assertEquals(cocktail,main.getCocktail(cocktail.getIdcocktail()));
         verify(cocktailRepository).findById(cocktail.getIdcocktail());
     }
     @Test
     void testGetInstruction(){
         Instruction instruction= new Instruction("description");
-        Optional<Instruction> optionalInstruction= Optional.of(instruction);
         given(instructionRepository.findById(instruction.getIdinstruction())).willReturn(Optional.of(instruction));
-        Assertions.assertEquals(optionalInstruction,main.getInstruction(instruction.getIdinstruction()));
+        Assertions.assertEquals(instruction,main.getInstruction(instruction.getIdinstruction()));
         verify(instructionRepository).findById(instruction.getIdinstruction());
     }
     @Test
     void testGetEquipment(){
         Equipment equipment = new Equipment("name","type");
-        Optional<Equipment> optionalEquipment = Optional.of(equipment);
         given(equipmentRepository.findById(equipment.getIdequipment())).willReturn(Optional.of(equipment));
-        Assertions.assertEquals(optionalEquipment,main.getEquipment(equipment.getIdequipment()));
+        Assertions.assertEquals(equipment,main.getEquipment(equipment.getIdequipment()));
         verify(equipmentRepository).findById(equipment.getIdequipment());
     }
     @Test
     void testGetGarnish(){
         Garnish garnish= new Garnish("name","type","storage");
-        Optional<Garnish> optionalGarnish= Optional.of(garnish);
         given(garnishRepository.findById(garnish.getIdgarnish())).willReturn(Optional.of(garnish));
-        Assertions.assertEquals(optionalGarnish,main.getGarnish(garnish.getIdgarnish()));
+        Assertions.assertEquals(garnish,main.getGarnish(garnish.getIdgarnish()));
         verify(garnishRepository).findById(garnish.getIdgarnish());
     }
     @Test
     void testGetGlass(){
         Glass glass= new Glass("type", 10);
-        Optional<Glass> optionalGlass= Optional.of(glass);
         given(glassRepository.findById(glass.getIdglass())).willReturn(Optional.of(glass));
-        Assertions.assertEquals(optionalGlass,main.getGlass(glass.getIdglass()));
+        Assertions.assertEquals(glass,main.getGlass(glass.getIdglass()));
         verify(glassRepository).findById(glass.getIdglass());
     }
 ///////////////////////////////////////////Add///////////////////////////////////////////////
@@ -204,10 +198,9 @@ class SpringbootTrailApplicationTests {
         ingredients.setName("Name");
 
         ArgumentCaptor<Ingredients> ingredientsArgumentCaptor = ArgumentCaptor.forClass(Ingredients.class);
-        Optional<Ingredients> capturedIngredient= main.updateIngredient(ingredients,ingredients.getIdingredientid());
-        Optional<Ingredients> ingredient = Optional.of(ingredients);
+        Ingredients capturedIngredient= main.updateIngredient(ingredients,ingredients.getIdingredientid());
         verify(ingredientRepository).save(ingredients);
-        Assertions.assertEquals(ingredient,capturedIngredient);
+        Assertions.assertEquals(ingredients,capturedIngredient);
     }
     @Test
     void testUpdateCocktail(){
