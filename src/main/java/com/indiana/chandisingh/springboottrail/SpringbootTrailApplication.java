@@ -43,6 +43,7 @@ public class SpringbootTrailApplication {
 
 	String saved ="Saved";
 	String deleted="Deleted";
+	String updated ="Updated";
 
 	/////////////////INGREDIENTS////////////////////////////////////////////////////
 

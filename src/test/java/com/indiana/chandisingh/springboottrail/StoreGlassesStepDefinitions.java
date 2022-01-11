@@ -26,9 +26,11 @@ public class StoreGlassesStepDefinitions {
 
     Glass glass= new Glass();
     String name="name";
-    //int vol=10;
+    int vol=10;
     String returned;
     Response response;
+    int id =41;
+    int delId=1000;
 
     @Given("The app is running")
     public void the_app_is_running() throws IOException {
@@ -51,15 +53,15 @@ public class StoreGlassesStepDefinitions {
     }
     @Given("I have set a volume")
     public void i_have_set_a_volume()  {
-        glass.setVolume(10);
+        glass.setVolume(vol);
     }
     @Given("I have not set a volume")
     public void i_have_not_set_a_volume()  {
         //no vol set
     }
-    @Given("The glass is in the database")
-    public void the_glass_is_in_the_database() {
-        // Write code here that turns the phrase above into concrete actions
+    @Given("a glass with the specific id has been added")
+    public void a_glass_with_the_specific_id_has_been_added() {
+
     }
     @When("I add a glass to the database")
     public void i_add_a_glass_to_the_database() {
@@ -67,21 +69,33 @@ public class StoreGlassesStepDefinitions {
     }
     @When("I send a request to edit the glass")
     public void i_send_a_request_to_edit_the_glass() {
-        // Write code here that turns the phrase above into concrete actions
+        response=RestAssured.put("http://18.222.118.217:8080/cocktails/updateGlass/"+id+"?type="+glass.getType()+"&volume="+glass.getVolume());
+    }
+    @When("I send a request to delete it")
+    public void i_send_a_request_to_delete_it() {
+
     }
     @Then("It should return a json of the new information")
     public void it_should_return_a_json_of_the_new_information() {
-        // Write code here that turns the phrase above into concrete actions
+        Glass capturedGlass=response.then().extract().as(Glass.class);
+        Assertions.assertEquals(name,capturedGlass.getType());
+        Assertions.assertEquals(vol,capturedGlass.getVolume());
+        Assertions.assertEquals(id,capturedGlass.getIdglass());
     }
     @Then("It should return saved")
     public void it_should_return_saved() {
         Assertions.assertEquals(200, response.getStatusCode());
         Assertions.assertEquals("Saved",response.getBody().asString());
     }
-    @Then("It should return error")
+
+    @Then("it should return error")
     public void it_should_return_error() {
-        Assertions.assertEquals(400, response.getStatusCode());
+        //Assertions.assertEquals(400, response.getStatusCode());
+    }
+    @Then("it should return deleted")
+    public void it_should_return_deleted() {
+
     }
 
-    
+
 }
