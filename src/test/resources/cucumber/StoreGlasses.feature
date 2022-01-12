@@ -1,7 +1,6 @@
 Feature: store glasses
     AS A Customer
     I WANT to store glasses
-    AND update glasses
     SO THAT they can be accessed later
 
     Scenario: Successfully add new glass to glass database
@@ -11,6 +10,11 @@ Feature: store glasses
         When I add a glass to the database
         Then It should return saved
 
+Feature: store glasses
+    AS A Customer
+    I WANT to edit glasses
+    SO THAT I can fix incorrect information
+
     Scenario: Successfully edit a glass in database
         Given The app is running
         And the glass is in the database
@@ -18,6 +22,11 @@ Feature: store glasses
         And I have set a volume
         When I send a request to edit the glass
         Then It should return a json of the new information
+
+Feature: store glasses
+    AS A Customer
+    I WANT to delete glasses
+    SO THAT they cannot be found in the database
 
     Scenario: Successfully delete a glass from database
         Given The app is running
