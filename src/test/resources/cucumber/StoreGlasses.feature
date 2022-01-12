@@ -8,7 +8,7 @@ Feature: store glasses
         And I have set a type
         And I have set a volume
         When I add a glass to the database
-        Then It should return saved
+        Then It should return the glass
 
 Feature: store glasses
     AS A Customer

@@ -27,10 +27,7 @@ public class StoreGlassesStepDefinitions {
     Glass glass= new Glass();
     String name="name";
     int vol=10;
-    String returned;
     Response response;
-    int id =41;
-    int noId=3;
     Glass dbGlass;
 
     @Given("The app is running")
@@ -69,6 +66,8 @@ public class StoreGlassesStepDefinitions {
         dbGlass=RestAssured.post("http://18.222.118.217:8080/cocktails/addGlass?type="+glass.getType()+"&volume="+glass.getVolume()).then().extract().as(Glass.class);
         RestAssured.delete("http://18.222.118.217:8080/cocktails/deleteGlass?idglass="+dbGlass.getIdglass());
     }
+
+    ////////////////////////////////////////////////////////////////////////////////////
     @When("I add a glass to the database")
     public void i_add_a_glass_to_the_database() {
        response=RestAssured.post("http://18.222.118.217:8080/cocktails/addGlass?type="+glass.getType()+"&volume="+glass.getVolume());
@@ -81,6 +80,9 @@ public class StoreGlassesStepDefinitions {
     public void i_send_a_request_to_delete_it() {
         response=RestAssured.delete("http://18.222.118.217:8080/cocktails/deleteGlass?idglass="+dbGlass.getIdglass());
     }
+
+    //////////////////////////////////////////////////////////////////////////////////////
+
     @Then("It should return a json of the new information")
     public void it_should_return_a_json_of_the_new_information() {
         Glass capturedGlass=response.then().extract().as(Glass.class);
@@ -88,8 +90,8 @@ public class StoreGlassesStepDefinitions {
         Assertions.assertEquals(vol,capturedGlass.getVolume());
         Assertions.assertEquals(dbGlass.getIdglass(),capturedGlass.getIdglass());
     }
-    @Then("It should return saved")
-    public void it_should_return_saved() {
+    @Then("It should return the glass")
+    public void it_should_return_the_glass() {
         Glass capturedGlass=response.then().extract().as(Glass.class);
         Assertions.assertEquals(200, response.getStatusCode());
         Assertions.assertEquals(glass.getType(),capturedGlass.getType());
@@ -100,6 +102,7 @@ public class StoreGlassesStepDefinitions {
     public void it_should_return_error() {
         Assertions.assertEquals(500, response.getStatusCode());
     }
+
     @Then("it should return deleted")
     public void it_should_return_deleted() {
         Assertions.assertEquals("Deleted",response.getBody().asString());
